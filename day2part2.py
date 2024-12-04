@@ -29,7 +29,7 @@ while (line := sys.stdin.readline()):
     report = [int(level) for level in line[:-1].split(' ')]
     if is_safe(report):
         safe_reports += 1
-    else:
+    else: # remove this line to line 36 to get part 1
         for i in range(len(report)):
             if is_safe(report[:i] + report[i + 1:]):
                 safe_reports += 1

@@ -9,7 +9,6 @@ res = 0
 enabled = True
 
 for match in expr.finditer(data):
-    print(data[match.start():match.end()])
     if data[match.start():match.end()] == "don't()":
         enabled = False
         continue

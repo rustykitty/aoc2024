@@ -17,8 +17,6 @@ while (line := sys.stdin.readline()) != '':
 
 res = 0
 
-print('----')
-
 for i in list1:
     print(i, res)
     res += dl(list2, i) * i
