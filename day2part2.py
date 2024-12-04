@@ -1,25 +1,38 @@
 import sys
 
+from typing import *
+
 safe_reports = 0
+
+def is_going(arr: List[int], up: bool):
+    condition = (lambda x, y: x < y) if up else (lambda x, y: x > y)
+    for i in range(len(arr) - 1):
+        if condition(arr[i], arr[i + 1]):
+            pass
+        else:
+            return False
+    return True
+
+def in_bounds(arr: List[int]):
+    for i in range(len(arr) - 1):
+        if 1 <= abs(arr[i] - arr[i + 1]) <= 3:
+            pass
+        else:
+            return False
+    return True
+
+
+is_safe = lambda x: is_going(x, (x[1] - x[0]) > 0) and in_bounds(x)
 
 while (line := sys.stdin.readline()):
     if (line == '\n'): break
     report = [int(level) for level in line[:-1].split(' ')]
-    # print(report)
-    how_safe = 0
-    up = []
-    for i in range(len(report) - 1):
-        if not ((3 >= abs(report[i] - report[i + 1]) >= 1)):
-            how_safe += 1
-        if report[i] - report[i + 1] > 0:
-            up.append(True)
-        else:
-            up.append(False)
-    up_count = up.count(True)
-    down_count = up.count(False)
-    if up_count == 1 or down_count == 1:
-        how_safe += 1
-    if how_safe < 2: 
+    if is_safe(report):
         safe_reports += 1
+    else:
+        for i in range(len(report)):
+            if is_safe(report[:i] + report[i + 1:]):
+                safe_reports += 1
+                break
 
 print(safe_reports)
