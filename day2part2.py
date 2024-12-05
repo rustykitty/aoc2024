@@ -1,10 +1,8 @@
 import sys
 
-from typing import *
-
 safe_reports = 0
 
-def is_going(arr: List[int], up: bool):
+def is_going(arr, up):
     condition = (lambda x, y: x < y) if up else (lambda x, y: x > y)
     for i in range(len(arr) - 1):
         if condition(arr[i], arr[i + 1]):
@@ -13,7 +11,7 @@ def is_going(arr: List[int], up: bool):
             return False
     return True
 
-def in_bounds(arr: List[int]):
+def in_bounds(arr):
     for i in range(len(arr) - 1):
         if 1 <= abs(arr[i] - arr[i + 1]) <= 3:
             pass

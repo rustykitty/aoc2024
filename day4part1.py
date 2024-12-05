@@ -7,7 +7,7 @@ matches = 0
 match_str = 'XMAS'
 
 # horizontal matches
-def match_horizontal(s: str):
+def match_horizontal(s):
     global matches
     for i in wordSearch:
         for j in range(len(wordSearch[0]) - 3):
@@ -16,7 +16,7 @@ def match_horizontal(s: str):
 match_horizontal(match_str)
 match_horizontal(match_str[::-1])
 # vertical matches
-def match_vertical(s: str):
+def match_vertical(s):
     global matches
     for i in range(len(wordSearch)):
         for j in range(len(wordSearch[0]) - 3):
@@ -25,14 +25,14 @@ def match_vertical(s: str):
 match_vertical(match_str)
 match_vertical(match_str[::-1])
 # diagonal matches
-def match_diagonal(s: str):
+def match_diagonal(s):
     global matches
     for i in range(len(wordSearch) - 3): # we have to do 3 for some reason instead of 
         for j in range(len(wordSearch[0]) - 3): # 4, idk why but that's just how it is
             diagonal_str = ''.join(wordSearch[i + x][j + x] for x in range(4))
             if diagonal_str == s:
                 matches += 1
-def match_backward_diagonal(s: str):
+def match_backward_diagonal(s):
     global matches
     for i in range(len(wordSearch) - 3):
         for j in range(3, len(wordSearch[0])):

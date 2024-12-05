@@ -1,14 +1,12 @@
 from sys import stdin
 
-from typing import *
-
 i1, i2 = stdin.read().rstrip().split('\n\n')
 
 rules = [tuple(int(i) for i in x.split('|')) for x in i1.split('\n')]
 
 pages = [list(int(i) for i in x.split(',')) for x in i2.split('\n')]
 
-def evaluate_rules(pages: List[int]) -> bool:
+def evaluate_rules(pages):
     global rules
     for i, j in rules:
         if i in pages and j in pages:
