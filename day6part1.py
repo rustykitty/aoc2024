@@ -2,8 +2,6 @@ import sys
 labmap = [list(i) for i in sys.stdin.read().rstrip().split('\n')]
 pos = (-1, -1)
 
-# obstacles = set()
-
 rotation = 'up'
 
 def repeat(i):
@@ -17,8 +15,6 @@ def get(pos):
 
 for i in range(len(labmap)):
     for j in range(len(labmap[0])):
-        # if labmap[i][j] == '#':
-        #     obstacles.add((i, j))
         if labmap[i][j] == '^':
             pos = (i, j)
             labmap[i][j] = '.'
