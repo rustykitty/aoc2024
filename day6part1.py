@@ -2,8 +2,6 @@ import sys
 labmap = [list(i) for i in sys.stdin.read().rstrip().split('\n')]
 pos = (-1, -1)
 
-rotation = 'up'
-
 def repeat(i):
     while True:
         for ele in i:
@@ -19,10 +17,6 @@ for i in range(len(labmap)):
             pos = (i, j)
             labmap[i][j] = '.'
 
-assert all(x != -1 for x in pos)
-
-og_pos = pos
-
 gen = repeat([
         (-1, 0), # up
         (0, 1), # right
@@ -34,7 +28,7 @@ add = (lambda a, b: tuple(i + j for (i, j) in zip(a, b)))
 
 direction = next(gen)
 
-poses = set()
+visited = set()
 
 while True:
     fwd_p = add(pos, direction)
@@ -47,7 +41,7 @@ while True:
         direction = next(gen)
         continue
     else:
-        poses.add(pos)
+        visited.add(pos)
         pos = add(direction, pos)
 
-print(len(poses) + 1)
+print(len(visited) + 1)
