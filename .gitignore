@@ -1,6 +1,6 @@
 a.out
-*example
-*input
+day*example
+day*input
 .vscode/
 .DS_Store
 __pycache__/
