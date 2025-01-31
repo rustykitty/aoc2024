@@ -5,7 +5,11 @@ data = [x.split(': ') for x in sys.stdin.read().rstrip().split('\n')]
 
 res = 0
 
-funcs = [lambda x, y: x + y, lambda x, y: x * y]
+funcs = [
+    lambda x, y: x + y, 
+    lambda x, y: x * y,
+    lambda x, y: int(str(x) + str(y)) # concat operator
+]
 
 for i in data:
     a, b = i
